@@ -1,0 +1,9 @@
+{
+	"external": true,
+	"scripts": {
+		"build": "docker build -t ptournem:bind9 .",
+		"start": "docker run -d --rm --name=dns-server -p 53:53/udp -p 53:53/tcp ptournem:bind9 ",
+		"debug": "docker run -d --rm --name=dns-server -p 53:53/udp -p 53:53/tcp --mount type=bind,source='$(pwd)/config/zones',target=/etc/bind/zones/ ptournem:bind9",
+		"refresh": "docker exec -d dns-server /etc/init.d/bind9 restart"
+	}
+}

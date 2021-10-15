@@ -1,0 +1,5 @@
+zone "localhost.com" {
+    type master;
+    file "/etc/bind/zones/com.localhost.conf";
+};
+
